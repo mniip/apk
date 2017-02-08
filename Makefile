@@ -25,8 +25,9 @@ R_JAVA_FILE := $(R_JAVA_DIR)/$(PACKAGE_PATH)/R.java
 JAVAC_FLAGS := -target 1.7 -source 1.7 $(MY_JAVAC_FLAGS)
 
 BIN_DIR := bin/
-SOURCES := $(wildcard src/*.java) $(wildcard src/*/*.java) $(wildcard src/*/*/*.java) $(wildcard src/*/*/*/*.java)
-CLASSES := $(patsubst src/%.java,$(BIN_DIR)/%.class,$(SOURCES)) $(patsubst $(R_JAVA_DIR)/%.java,$(BIN_DIR)/%.class,$(R_JAVA_FILE))
+SRC_DIR := src/
+SOURCES := $(wildcard $(SRC_DIR)/*.java) $(wildcard $(SRC_DIR)/*/*.java) $(wildcard $(SRC_DIR)/*/*/*.java) $(wildcard $(SRC_DIR)/*/*/*/*.java)
+CLASSES := $(patsubst $(SRC_DIR)/%.java,$(BIN_DIR)/%.class,$(SOURCES)) $(patsubst $(R_JAVA_DIR)/%.java,$(BIN_DIR)/%.class,$(R_JAVA_FILE))
 
 DEX_FILE := $(patsubst %.apk,%.dex,$(TARGET))
 
